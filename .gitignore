@@ -7,6 +7,5 @@
 *.lot
 *.out
 *.synctex.gz
-*.tex
 *.tex~
 *.toc

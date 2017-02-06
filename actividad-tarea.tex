@@ -1,0 +1,229 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Autor:        Aguilar Enriquez, Paul Sebastian a.k.a. Penserbjorne
+% Fecha:        05/02/2017
+% Descripcion:  Plantilla base para actividades o tareas.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,11pt]{article}                 % Papel tamaño carta, texto de 11pt.
+
+\usepackage[top=2cm, bottom=2cm, left=2.2cm, right=2.2cm]{geometry} % Margenes
+\usepackage[T1]{fontenc}                              % Indicamos la codificacion de las fuentes.
+\usepackage[utf8x]{inputenc}                          % Definimos la codificacion.
+\usepackage{lmodern}                                  % Para poder usar acentos.
+\usepackage[spanish]{babel}                           % Usaremos idioma español.
+\usepackage{amsmath}                                  % Para formulas matematicas.
+\usepackage{graphicx}                                 % Para imagenes.
+\usepackage{float}                                    % Para posicionar objetos.
+\usepackage{booktabs}                                 % Para formatear tablas.
+\usepackage{hyperref}                                 % Para enlaces y referencias.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Los logos tienen posiciones relativas al nombre de la escuela.
+% Cada imagen esta desplazada con respecto al texto, en este caso nombre de la univseridad.
+% No se necesitan paquetes adicionales, el entorno estandar para imagenes de LaTeX puede hacerlo.
+% El truco esta en definir una imagen de tamaño cero, asi no afecta al centrar los titulos.
+\def\logoUNAM{%
+  \begin{picture}(0,0)\unitlength=1cm
+    \put (-3.5,-3) {\includegraphics[width=8em]{images/escudo-unam}}
+  \end{picture}
+}
+
+\def\logoFI{%
+  \begin{picture}(0,0)\unitlength=1cm
+    \put (0.5,-3) {\includegraphics[width=8em]{images/escudo-fi}}
+  \end{picture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{Apellido 1 Apellido 2, Nombre1 Nombre2 --- Cuenta}  % Autor de la actividad.
+\title{Activiad XX : Nombre de la actividad}                % Titulo de la actividad.
+\date{dd/mm/yyyy}                                           % Fecha de entrega.
+\def\universidad{Universidad Nacional Autónoma de México}   % Nombre de la universidad.
+\def\facultad{Facultad de ...}                              % Nombre de la facultdad.
+\def\semestre{yyyy-1/2}                                     % Semestre lectivo.
+\def\materia{Nombre de la materia - Grupo XX}               % Nombre de la materia y grupo.
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+  
+  % Titulo del documento con logos.
+  \begin{center}
+    \logoUNAM {\Large \universidad} \logoFI\par
+    {\large \facultad}\par
+    \semestre\par
+    \materia\par
+    \@author\par
+    \@date\par
+    \@title
+  \end{center}
+
+  \hrulefill\par
+
+  \pagenumbering{gobble}                              % Oculta el numero de pagina.
+  \tableofcontents                                    % Crea el indice o tabla de contenido.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \newpage                                            % Inserta una pagina nueva.
+  \pagenumbering{arabic}                              % Muestra el numero de pagina.
+  
+  \section{Tema1}                                     % Insertamos nueva seccion, SI aparece en la tabla de contenido.
+  Contenido del tema 1.
+  
+  Esta formula $f(x) = x^2$ es un ejemplo inline.     % Formato inline.
+  
+  Ecuaciones no numeradas.
+  
+  \begin{equation*}                                   % Ecuacion 1.
+    1 + 2 = 3 
+  \end{equation*}
+
+  \begin{equation*}                                   % Ecuacion 2.
+    1 = 3 - 2
+  \end{equation*}
+
+  Ecuaciones numeradas.
+  
+  \begin{equation}                                   % Ecuacion 1.
+    1 + 2 = 3 
+  \end{equation}
+
+  \begin{equation}                                   % Ecuacion 2.
+    1 = 3 - 2
+  \end{equation}
+  
+  \begin{align*}                                     % Alineamos formulas.
+    f(x) = x^2\\
+    g(x) = \frac{1}{x}\\
+    F(x) = \int^a_b \frac{1}{3}x^3
+  \end{align*}
+
+                                                      % La matrices van en formato inline.
+  \begin{center}
+    $
+      \begin{matrix}
+        1 & 0\\
+        0 & 1
+      \end{matrix}
+    $
+  \end{center}
+                                                      % Matriz con corchetes grandes.
+  \begin{center}
+    $
+      \left[
+        \begin{matrix}
+          1 & 0\\
+          0 & 1
+        \end{matrix}
+      \right]
+    $  
+  \end{center}
+  
+  Esto esta inline $\left(\frac{1}{\sqrt{x}}\right)$  % Formula con parentesis grandes.
+  
+  % Parametros para \begin{figute}[]
+  % h (here) - same location
+  % t (top) - top of page
+  % b (bottom) - bottom of page
+  % p (page) - on an extra page
+  % ! (override) - will force the specified location
+  % \usepackage{float} permite usar [H], mas estricto que [h!].
+  \begin{figure}[H]
+    \centering                                        % Centramos la imagen.
+    \includegraphics[height=5cm]{images/escudo-unam}  % Incluimos la imagen.
+    \caption{Pie de la imagen.}                       % Descripcion de la imagen.
+    \label{fig:fig1}                                  % Etiqueta para referenciar a la imagen.
+  \end{figure}
+
+  Esto nos referencia a la figura~\ref{fig:fig1}.    % Ejemplo de referencia.
+  
+  Cita aleatoria~\cite{ref:cita} embebida en el texto.  % Ejemplo de cita.
+  
+  Esto nos lleva a una nota de pie~\footnote{\label{notaDePie}Hola nota de pie.}. % Ejemplo de nota al pie.
+  
+  Esta es otra referencia a la misma nota de pie~\ref{notaDePie}. % Ejemplo de referencia a nota al pie.
+  
+  % Ejemplo de tabla
+  \begin{table}[H]
+    \centering                                        % Centramos la tabla.
+    \begin{tabular}{ccc}                              % Indicamos el numero de columnas.
+      \toprule                                        % Linea superior de la tabla.
+      Titulo 1 & Titulo 2 & Titulo 3\\
+      \midrule                                        % Linea que separa los titulos y valores de la tabla.
+      Val 1 & Val 2 & Val 3\\             % Las columnas se separan con ampersand & y las filas con salto de linea \\
+      Val 4 & Val 5 & Val 6\\
+      Val 7 & Val 8 & Val 9\\
+      \bottomrule                                     % Linea de cierre de la tabla.
+    \end{tabular}
+    \caption{Descripcion de la tabla.}                % Descripcion de la imagen.
+    \label{tab:tab1}                                  % Etiqueta para referenciar a la imagen.
+  \end{table}
+  
+  \paragraph{Parrafo 1}                               %  Insertamos nuevo parrafo, NO aparece en la tabla de contenido.
+  Contenido del parrafo 1 del tema 1.
+  
+  \subparagraph{Subparrafo 1}                         %  Insertamos nuevo subparrafo, NO aparece en la tabla de contenido.
+  Contenido del subparrafo 1 del parrafo 1 del tema 1.
+  
+  \subparagraph{Subparrafo 2}                         %  Insertamos nuevo subparrafo, NO aparece en la tabla de contenido.
+  Contenido del subparrafo 2 del parrafo 1 del tema 1.
+
+  \paragraph{Parrafo 2}                               %  Insertamos nuevo parrafo, NO aparece en la tabla de contenido.
+  Contenido del parrafo 2 del tema 1.
+  
+  \subparagraph{Subparrafo 1}                         %  Insertamos nuevo subparrafo, NO aparece en la tabla de contenido.
+  Contenido del subparrafo 1 del parrafo 2 del tema 1.
+  
+  \subparagraph{Subparrafo 2}                         %  Insertamos nuevo subparrafo, NO aparece en la tabla de contenido.
+  Contenido del subparrafo 2 del parrafo 2 del tema 1.
+    
+  \subsection{Subtema 1}                              %  Insertamos nueva subseccion, SI aparece en la tabla de contenido.
+  Contenido del subtema 1.
+
+  \paragraph{Parrafo 1}                               %  Insertamos nuevo parrafo, NO aparece en la tabla de contenido.
+  Contenido del parrafo 1 del subtema 1.
+  
+  \subparagraph{Subparrafo 1}                         %  Insertamos nuevo subparrafo, NO aparece en la tabla de contenido.
+  Contenido del subparrafo 1 del parrafo 1 del subtema 1.
+  
+  \subparagraph{Subparrafo 2}                         %  Insertamos nuevo subparrafo, NO aparece en la tabla de contenido.
+  Contenido del subparrafo 2 del parrafo 1 del subtema 1.
+
+  \paragraph{Parrafo 2}                               %  Insertamos nuevo parrafo, NO aparece en la tabla de contenido.
+  Contenido del parrafo 2 del subtema 1.
+  
+  \subparagraph{Subparrafo 1}                         %  Insertamos nuevo subparrafo, NO aparece en la tabla de contenido.
+  Contenido del subparrafo 1 del parrafo 2 del subtema 1.
+  
+  \subparagraph{Subparrafo 2}                         %  Insertamos nuevo subparrafo, NO aparece en la tabla de contenido.
+  Contenido del subparrafo 2 del parrafo 2 del subtema 1.
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  \begin{appendix}                                    % Apendice
+    \listoffigures                                    % Lista de figuras
+    \listoftables                                     % Lista de tablas
+  \end{appendix}
+  
+  \begin{thebibliography}{}                           % Bibliografia
+    \bibitem{ref:cita}                                % Etiqueta con la que se hara la referencia o cita.
+      Como citar: \url{http://www.cva.itesm.mx/biblioteca/pagina_con_formato_version_oct/apa.htm} % URL de apoyo para citar.
+
+    \bibitem{ref:web1}
+      Autor,
+      (Fecha de publicacion),
+      Titulo, paginas,
+      Fecha de recuperacion,
+      Sitio web: \url{http://www.google.com}
+
+    \bibitem{ref:github}
+      Repositorio del proyecto \url{https://github.com/penserbjorne}
+  \end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
