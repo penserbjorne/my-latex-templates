@@ -1,0 +1,12 @@
+# Archivos que genera latexila
+*.aux
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.synctex.gz
+*.tex
+*.tex~
+*.toc
