@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Autor:        Aguilar Enriquez, Paul Sebastian a.k.a. Penserbjorne
 % Fecha:        05/02/2017
-% Descripcion:  Plantilla base para actividades o tareas.
+% Descripción:  Plantilla base para actividades o tareas.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[a4paper,11pt]{article}                 % Papel tamaño carta, texto de 11pt.
@@ -10,7 +10,7 @@
 \usepackage[T1]{fontenc}                              % Indicamos la codificacion de las fuentes.
 \usepackage[utf8x]{inputenc}                          % Definimos la codificacion.
 \usepackage{lmodern}                                  % Para poder usar acentos.
-\usepackage[spanish]{babel}                           % Usaremos idioma español.
+\usepackage[spanish,es-nodecimaldot]{babel}           % Usaremos idioma español y punto decimal.
 \usepackage{amsmath}                                  % Para formulas matematicas.
 \usepackage{graphicx}                                 % Para imagenes.
 \usepackage{float}                                    % Para posicionar objetos.
@@ -25,13 +25,13 @@
 % El truco esta en definir una imagen de tamaño cero, asi no afecta al centrar los titulos.
 \def\logoUNAM{%
   \begin{picture}(0,0)\unitlength=1cm
-    \put (-3.5,-3) {\includegraphics[width=8em]{images/escudo-unam}}
+    \put (-3.5,-3) {\includegraphics[width=8em]{../images/escudo-unam}}
   \end{picture}
 }
 
 \def\logoFI{%
   \begin{picture}(0,0)\unitlength=1cm
-    \put (0.5,-3) {\includegraphics[width=8em]{images/escudo-fi}}
+    \put (0.5,-3) {\includegraphics[width=8em]{../images/escudo-fi}}
   \end{picture}
 }
 
@@ -134,7 +134,7 @@
   % \usepackage{float} permite usar [H], mas estricto que [h!].
   \begin{figure}[H]
     \centering                                        % Centramos la imagen.
-    \includegraphics[height=5cm]{images/escudo-unam}  % Incluimos la imagen.
+    \includegraphics[height=5cm]{../images/escudo-unam}  % Incluimos la imagen.
     \caption{Pie de la imagen.}                       % Descripcion de la imagen.
     \label{fig:fig1}                                  % Etiqueta para referenciar a la imagen.
   \end{figure}
